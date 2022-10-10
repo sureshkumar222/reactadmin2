@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import SideBar from "./SideBar";
+import "./css/sb-admin-2.css";
+import Top from "./Top";
+import Dashboard from "./Dashboard";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import User from "./User";
+import Usercreate from "./Usercreate";
+import View from "./View";
+import Edituser from "./Edituser";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <div id="wrapper">
+      <SideBar />
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <Top />
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard/>}> </Route>
+            <Route path="/user" element={<User/>}> </Route>
+            <Route path="/user_create" element={<Usercreate/>}> </Route>
+            <Route path="/user/:id" element={<View/>}> </Route>
+            <Route path="/edit/:id" element={<Edituser/>}> </Route>
+            
+            
+
+          </Routes>
+        </div>
+      </div>
+    </div></BrowserRouter>
   );
 }
 
